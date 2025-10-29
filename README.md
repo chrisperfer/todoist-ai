@@ -123,6 +123,160 @@ npx -y mcp-remote https://ai.todoist.net/mcp
 
 For more details on setting up and using the MCP server, including creating custom servers, see [docs/mcp-server.md](docs/mcp-server.md).
 
+## Using as a CLI Tool
+
+The Todoist CLI provides a command-line interface with **progressive disclosure** for efficient context usage with LLMs. Instead of exposing all 24 tools at once (consuming ~5,700 tokens), the CLI uses a hierarchical structure that reveals information only when needed.
+
+### Benefits for LLM Integration
+
+- **90%+ Context Savings**: LLMs only see relevant command information
+- **Progressive Disclosure**: Three-level hierarchy (overview → resource group → specific operation)
+- **Better Comprehension**: Focused help at each level improves LLM understanding
+- **Efficient Exploration**: LLMs can discover capabilities without context overload
+
+### Installation
+
+```bash
+npm install -g @doist/todoist-ai
+```
+
+Or use directly with npx:
+
+```bash
+npx @doist/todoist-ai
+```
+
+### Authentication
+
+Set your Todoist API token as an environment variable:
+
+```bash
+export TODOIST_API_TOKEN="your-token-here"
+```
+
+Get your token from: https://todoist.com/app/settings/integrations/developer
+
+Alternatively, pass it with each command:
+
+```bash
+todoist --token "your-token-here" tasks find --search "urgent"
+```
+
+### Progressive Disclosure in Action
+
+**Level 1: Top-Level Overview** (~50 tokens)
+```bash
+todoist --help
+```
+
+Shows available resource groups: tasks, projects, sections, comments, etc.
+
+**Level 2: Resource Group** (~200 tokens)
+```bash
+todoist tasks --help
+```
+
+Shows operations available for tasks: add, update, complete, find, etc.
+
+**Level 3: Specific Operation** (~400 tokens)
+```bash
+todoist tasks add --help
+```
+
+Shows all parameters and examples for adding tasks.
+
+### Command Structure
+
+```
+todoist
+├── tasks (add, update, complete, find, find-by-date, find-completed)
+├── projects (add, update, find)
+├── sections (add, update, find)
+├── comments (add, update, find)
+├── collaborators (find)
+├── assignments (manage)
+├── activity (find)
+├── search (query, fetch)
+├── delete
+├── overview
+└── user
+```
+
+### Quick Examples
+
+```bash
+# Add a task
+todoist tasks add --content "Review PR #123" --priority p1 --due "tomorrow"
+
+# Find tasks in a project
+todoist tasks find --project-id 12345 --labels "urgent,bug"
+
+# Get today's tasks
+todoist tasks find-by-date --start today
+
+# Create a project
+todoist projects add --name "New Project" --favorite
+
+# Get account overview
+todoist overview
+
+# Search across everything
+todoist search query "meeting notes"
+```
+
+### Output Formats
+
+**Human-Readable (Default)**
+```bash
+todoist tasks find --search "urgent"
+```
+
+**JSON (for programmatic use)**
+```bash
+todoist tasks find --search "urgent" --json
+```
+
+### Batch Operations
+
+Many commands support batch operations for efficiency:
+
+```bash
+# Batch add tasks from JSON
+todoist tasks add --batch '[
+  {"content":"Task 1","priority":"p1"},
+  {"content":"Task 2","projectId":"12345"}
+]'
+
+# Bulk assignment operations
+todoist assignments manage --operation assign --task-ids 123,456,789 --user "john@example.com"
+```
+
+### LLM Integration Tips
+
+For AI assistants using this CLI:
+
+1. **Start broad, drill down**: Use `--help` at each level to discover capabilities
+2. **Context-efficient exploration**: Only request detailed help when needed
+3. **Use JSON output**: Add `--json` flag for structured data parsing
+4. **Leverage search**: Use `todoist search query` for quick discovery
+5. **Get overview first**: Use `todoist overview` to understand account structure
+
+### All Available Commands
+
+- **tasks**: `add`, `update`, `complete`, `find`, `find-by-date`, `find-completed`
+- **projects**: `add`, `update`, `find`
+- **sections**: `add`, `update`, `find`
+- **comments**: `add`, `update`, `find`
+- **collaborators**: `find`
+- **assignments**: `manage` (bulk assign/unassign/reassign)
+- **activity**: `find` (audit logs)
+- **search**: `query`, `fetch` (OpenAI MCP compatible)
+- **delete**: Universal deletion (tasks, projects, sections, comments)
+- **overview**: Markdown overview of account or specific project
+- **user**: Get user information and settings
+
+For detailed help on any command: `todoist [command] [subcommand] --help`
+
 ## Features
 
 A key feature of this project is that tools can be reused, and are not written specifically for use in an MCP server. They can be hooked up as tools to other conversational AI interfaces (e.g. Vercel's AI SDK).
