@@ -1,6 +1,6 @@
 ---
 name: todoist-cli
-description: Use when working with Todoist via the todoist CLI - teaches efficient CLI usage through progressive disclosure, context-saving patterns, and best practices for LLM integration
+description: Complete Todoist task and project management - create, search, update, and organize tasks; manage projects, sections, and collaboration; bulk operations and activity tracking. Use when user mentions Todoist or wants to interact with their task management system.
 ---
 
 # Using the Todoist CLI Efficiently
