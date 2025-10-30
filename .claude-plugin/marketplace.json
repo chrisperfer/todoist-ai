@@ -7,7 +7,7 @@
     "plugins": [
         {
             "name": "todoist-cli",
-            "source": ".",
+            "source": "./",
             "description": "Claude Code skill for efficient Todoist CLI usage with progressive disclosure patterns and context-saving strategies",
             "version": "1.0.0",
             "author": {
