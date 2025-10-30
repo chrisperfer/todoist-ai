@@ -237,7 +237,7 @@ function generateTextContent({
         limit: args.limit,
         nextCursor: nextCursor ?? undefined,
         filterHints,
-        previewLines: previewTasks(tasks, Math.min(tasks.length, args.limit)),
+        previewLines: previewTasks(tasks), // Uses default limit of 5 for preview
         zeroReasonHints,
         nextSteps,
     })
