@@ -7,8 +7,9 @@ A Claude Code plugin that teaches AI assistants how to use the Todoist CLI effic
 ## Files Created
 
 ### Plugin Files (in this project)
-- `.claude/skills/todoist-cli/SKILL.md` - The main skill file
+- `skills/todoist-cli/SKILL.md` - The main skill file
 - `.claude-plugin/plugin.json` - Plugin metadata
+- `.claude-plugin/marketplace.json` - Marketplace metadata
 - `PLUGIN_README.md` - README for the plugin repository
 - `PLUGIN_LICENSE.md` - MIT license
 - `PLUGIN_GITIGNORE.md` - Git ignore file
@@ -104,16 +105,16 @@ You mentioned you'll install the plugin the official way once done. Here's how:
 ## Plugin Structure
 
 ```
-todoist-cli-plugin/
-├── .claude/
-│   └── skills/
-│       └── todoist-cli/
-│           └── SKILL.md          # Main skill file with usage patterns
+todoist-ai/
+├── skills/
+│   └── todoist-cli/
+│       └── SKILL.md              # Main skill file with usage patterns
 ├── .claude-plugin/
-│   └── plugin.json               # Plugin metadata
+│   ├── plugin.json               # Plugin metadata
+│   └── marketplace.json          # Marketplace metadata
 ├── .gitignore
-├── LICENSE                       # MIT license
-└── README.md                     # Installation and usage instructions
+├── LICENSE
+└── README.md
 ```
 
 ## Support and Issues
