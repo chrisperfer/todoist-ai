@@ -288,11 +288,23 @@ This repository includes a Claude Code plugin that teaches AI assistants how to 
 
 ### Installation
 
-Install the plugin directly from this repository:
+Add this repository as a marketplace, then install the plugin:
 
 ```bash
-claude plugin add https://github.com/chrisperfer/todoist-ai
+# Add the marketplace
+/plugin marketplace add chrisperfer/todoist-ai
+
+# Install the todoist-cli plugin
+/plugin install todoist-cli@todoist-ai-marketplace
 ```
+
+Alternatively, use the interactive menu:
+
+```bash
+/plugin
+```
+
+Then browse and select the `todoist-cli` plugin from the marketplace list.
 
 ### What It Does
 
