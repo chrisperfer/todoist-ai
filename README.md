@@ -277,6 +277,44 @@ For AI assistants using this CLI:
 
 For detailed help on any command: `todoist [command] [subcommand] --help`
 
+## Claude Code Plugin
+
+This repository includes a Claude Code plugin that teaches AI assistants how to use the Todoist CLI efficiently. The plugin provides a skill with:
+
+- **Progressive disclosure patterns**: How to navigate the 3-level CLI hierarchy efficiently
+- **Context-saving strategies**: Request help only when needed (90%+ context savings)
+- **Best practices**: Common workflows, batch operations, and JSON parsing
+- **Error handling**: Authentication and troubleshooting guidance
+
+### Installation
+
+Install the plugin directly from this repository:
+
+```bash
+claude plugin add https://github.com/chrisperfer/todoist-ai
+```
+
+### What It Does
+
+Once installed, Claude will automatically use this skill when you ask about Todoist operations. The skill teaches Claude to:
+
+1. Start with `todoist overview` to understand your account structure
+2. Use `todoist search query` for quick discovery
+3. Navigate the CLI hierarchy incrementally (don't load all help at once)
+4. Use `--json` flag when parsing output programmatically
+5. Leverage batch operations for multiple items
+
+### Example Usage
+
+After installing the plugin, you can ask Claude things like:
+
+- "Show me my tasks for today"
+- "Create a task in my Work project with priority 1"
+- "Find all tasks labeled 'urgent' in the Engineering project"
+- "Give me an overview of my Todoist account"
+
+Claude will use the skill to efficiently navigate the CLI and execute the appropriate commands.
+
 ## Features
 
 A key feature of this project is that tools can be reused, and are not written specifically for use in an MCP server. They can be hooked up as tools to other conversational AI interfaces (e.g. Vercel's AI SDK).

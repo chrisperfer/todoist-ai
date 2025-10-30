@@ -1,0 +1,20 @@
+{
+    "name": "todoist-cli",
+    "description": "Claude Code skill for efficient Todoist CLI usage with progressive disclosure patterns and context-saving strategies",
+    "version": "1.0.0",
+    "author": {
+        "name": "Chris Perfer",
+        "email": "chris@example.com"
+    },
+    "homepage": "https://github.com/chrisperfer/todoist-ai",
+    "repository": "https://github.com/chrisperfer/todoist-ai",
+    "license": "MIT",
+    "keywords": [
+        "todoist",
+        "cli",
+        "productivity",
+        "task-management",
+        "progressive-disclosure",
+        "skill"
+    ]
+}
