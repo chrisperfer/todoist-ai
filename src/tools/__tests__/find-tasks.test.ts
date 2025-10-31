@@ -710,7 +710,7 @@ describe(`${FIND_TASKS} tool`, () => {
 
 ### Links
 [Wikipedia - Test Link](https://en.wikipedia.org/wiki/Test)
-[GitHub Repository](https://github.com/Doist/todoist-ai)
+[GitHub Repository](https://github.com/chrisperfer/todoist-ai)
 [Google Search](https://www.google.com)
 
 ### Text Formatting
